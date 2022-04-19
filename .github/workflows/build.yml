@@ -12,7 +12,7 @@ env:
   PUBLIC_NAME: PotatoFamine
   SOLUTION_NAME: PotatoFamine
   INTERNAL_NAME: PotatoFamine
-  RELEASE_DIR: PotatoFamine\bin\Release\net6.0
+  RELEASE_DIR: PotatoFamine\PotatoFamine\bin\Release\net6.0
   PERSONAL_PLUGIN_REPO: Korosys/MyDalamudPlugins
   PR_PLUGIN_REPO: Korosys/DalamudPlugins
 
