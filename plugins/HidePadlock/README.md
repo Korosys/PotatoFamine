@@ -1,2 +1,0 @@
-## About | [How to Install](https://github.com/Fr4nsson/MyDalamudPlugins/blob/main/README.md)
-FFXIV Dalamud Plugin for [XIVLauncher](https://goatcorp.github.io/) to toggle the visibility of the padlock next to hotbar one.

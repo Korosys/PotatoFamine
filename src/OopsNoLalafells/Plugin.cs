@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-namespace OopsNoLalafells
+namespace PotatoFamine
 {
     public class Plugin : IDalamudPlugin
     {

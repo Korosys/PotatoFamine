@@ -3,7 +3,7 @@ using Dalamud.Plugin;
 using Newtonsoft.Json;
 using System;
 
-namespace OopsNoLalafells
+namespace PotatoFamine
 {
     public class Configuration : IPluginConfiguration {
         [NonSerialized]
