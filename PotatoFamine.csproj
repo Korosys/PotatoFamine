@@ -32,7 +32,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DalamudPackager" Version="2.1.5" />
+		<PackageReference Include="DalamudPackager" Version="2.1.7" />
+		<PackageReference Include="ILRepack" Version="2.0.18" GeneratePathProperty="true" />
 		<Reference Include="FFXIVClientStructs">
 			<HintPath>$(DalamudLibPath)FFXIVClientStructs.dll</HintPath>
 			<Private>false</Private>
@@ -63,37 +64,22 @@
 		</Reference>
 	</ItemGroup>
 
-	<Target Name="PackagePlugin" AfterTargets="Build">
+	<Target Name="ILRepack" AfterTargets="Build">
 		<ItemGroup>
-			<LimitedZip Include="$(AssemblyName).dll" />
-			<LimitedZip Include="$(AssemblyName).json" />
+			<InputAssemblies Include="$(TargetPath)" />
+			<InputAssemblies Include="$(TargetDir)*.dll" Exclude="$(TargetPath)" />
 		</ItemGroup>
-		<ItemGroup>
-			<FullZip Include="$(AssemblyName).dll" />
-			<FullZip Include="$(AssemblyName).json" />
-			<FullZip Include="$(AssemblyName).deps.json" />
-			<FullZip Include="$(AssemblyName).pdb" />
-		</ItemGroup>
-		<DalamudPackager ProjectDir="$(ProjectDir)" OutputPath="$(OutputPath)" AssemblyName="$(AssemblyName)" Condition="'$(Configuration)' == 'Debug'" />
-		<DalamudPackager ProjectDir="$(ProjectDir)" OutputPath="$(OutputPath)" Include="@(LimitedZip)" AssemblyName="$(AssemblyName)" MakeZip="true" Condition="'$(Configuration)' == 'Release'" />
+		<Exec Command="$(PkgILRepack)\tools\ILRepack.exe /lib:$(DalamudLibPath) /out:$(TargetDir)$(TargetFileName) @(InputAssemblies, ' ')" />
 	</Target>
 
-	<Target Name="PostBuildDebug" AfterTargets="PackagePlugin" Condition="'$(Configuration)' == 'Debug'">
+	<Target Name="CleanOutDir" AfterTargets="ILRepack">
 		<ItemGroup>
-			<CopyAssemblies Include="$(TargetDir)$(AssemblyName).dll" />
-			<CopyAssemblies Include="$(TargetDir)$(AssemblyName).json" />
+			<DeleteFiles Include="$(TargetDir)*.dll" Exclude="$(TargetDir)$(TargetName).dll" />
+			<DeleteFiles Include="$(TargetDir)*.pdb" Exclude="$(TargetDir)$(TargetName).pdb" />
+			<DeleteFiles Include="$(TargetDir)*.xml" />
 		</ItemGroup>
-		<Copy SourceFiles="@(CopyAssemblies)" DestinationFolder="$(AppData)\XIVLauncher\devPlugins\$(AssemblyName)\" ContinueOnError="true" />
-		<Message Text="Copying @(CopyAssemblies)" Importance="high" />
-	</Target>
-
-	<Target Name="PostBuildRelease" AfterTargets="PackagePlugin" Condition="'$(Configuration)' == 'Release'">
-		<ItemGroup>
-			<CopyAssemblies Include="$(TargetDir)$(AssemblyName)\$(AssemblyName).json" />
-			<CopyAssemblies Include="$(TargetDir)$(AssemblyName)\latest.zip" />
-		</ItemGroup>
-		<Copy SourceFiles="@(CopyAssemblies)" DestinationFolder="D:\Git Projects\MyDalamudPlugins\plugins\$(AssemblyName)" ContinueOnError="true" />
-		<Message Text="Copying @(CopyAssemblies)" Importance="high" />
+		<Message Text="Deleting @(DeleteFiles)" Importance="high" />
+		<Delete Files="@(DeleteFiles)" />
 	</Target>
 
 </Project>
