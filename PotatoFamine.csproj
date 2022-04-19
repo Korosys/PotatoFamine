@@ -6,7 +6,7 @@
 		<Company>Fr4nsson</Company>
 		<RootNamespace>OopsNoLalafells</RootNamespace>
 		<AssemblyName>OopsNoLalafells</AssemblyName>
-		<TargetFramework>net5.0-windows</TargetFramework>
+		<TargetFramework>net6.0-windows</TargetFramework>
 		<LangVersion>latest</LangVersion>
 		<PlatformTarget>x64</PlatformTarget>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
