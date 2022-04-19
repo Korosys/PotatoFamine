@@ -421,7 +421,7 @@ namespace PotatoFamine
 
             this.commandManager.RemoveHandler("/nolala");
 
-            this.pluginInterface.Dispose();
+            //this.pluginInterface.Dispose();
         }
 
         public void Dispose()
