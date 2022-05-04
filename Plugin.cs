@@ -37,7 +37,7 @@ namespace PotatoFamine
 
         private static readonly short[] RACE_STARTER_GEAR_IDS;
 
-        public string Name => "Oops, No Lalafells!";
+        public string Name => "Potato Famine";
 
         [PluginService] private DalamudPluginInterface pluginInterface { get; set; }
         [PluginService] private ObjectTable objectTable { get; set; }
@@ -96,16 +96,16 @@ namespace PotatoFamine
             this.pluginInterface.UiBuilder.OpenConfigUi += OpenSettingsMenu;
 
             this.commandManager.AddHandler(
-                "/nolala",
+                "/potato",
                 new CommandInfo(this.OpenSettingsMenuCommand)
                 {
-                    HelpMessage = "Opens the Oops, No Lalafells! settings menu.",
+                    HelpMessage = "Opens the PotatoFamine settings menu.",
                     ShowInHelp = true
                 }
             );
 
             var charaIsMountAddr =
-                this.sigScanner.ScanText("40 53 48 83 EC 20 48 8B 01 48 8B D9 FF 50 18 83 F8 08 75 08");
+                this.sigScanner.ScanText("40 53 48 83 EC 20 48 8B 01 48 8B D9 FF 50 10 83 F8 08 75 08");
             PluginLog.Log($"Found IsMount address: {charaIsMountAddr.ToInt64():X}");
             this.charaMountedHook ??=
                 new Hook<CharacterIsMount>(charaIsMountAddr, CharacterIsMountDetour);
@@ -419,7 +419,7 @@ namespace PotatoFamine
             // Refresh all players again
             RefreshAllPlayers();
 
-            this.commandManager.RemoveHandler("/nolala");
+            this.commandManager.RemoveHandler("/potato");
 
             //this.pluginInterface.Dispose();
         }

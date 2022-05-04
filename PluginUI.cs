@@ -29,7 +29,7 @@ namespace PotatoFamine
             }
 
             bool settingsVisible = this.plugin.SettingsVisible;
-            if (ImGui.Begin("Oops, No Lalafells!", ref settingsVisible, ImGuiWindowFlags.AlwaysAutoResize))
+            if (ImGui.Begin("Potato Famine", ref settingsVisible, ImGuiWindowFlags.AlwaysAutoResize))
             {
 
                 bool shouldChangeOthers = this.plugin.config.ShouldChangeOthers;
