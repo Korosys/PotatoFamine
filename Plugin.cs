@@ -127,7 +127,7 @@ namespace PotatoFamine
             this.flagSlotUpdateHook.Enable();
 
             // Trigger an initial refresh of all players
-            RefreshAllPlayers();
+            //RefreshAllPlayers();
         }
 
         private IntPtr CharacterIsMountDetour(IntPtr actorPtr)
@@ -249,7 +249,7 @@ namespace PotatoFamine
             {
                 this.config.Save();
                 this.unsavedConfigChanges = false;
-                this.RefreshAllPlayers();
+                //this.RefreshAllPlayers();
                 return true;
             }
 
@@ -328,27 +328,27 @@ namespace PotatoFamine
             unsavedConfigChanges = true;
         }
 
-        public async void RefreshAllPlayers()
-        {
+       // public async void RefreshAllPlayers()
+       // {
             // Workaround to prevent literally genociding the actor table if we load at the same time as Dalamud + Dalamud is loading while ingame
-            await Task.Delay(100); // LMFAOOOOOOOOOOOOOOOOOOO
-            var localPlayer = this.clientState.LocalPlayer;
-            if (localPlayer == null)
-            {
-                return;
-            }
+         //   await Task.Delay(100); // LMFAOOOOOOOOOOOOOOOOOOO
+           // var localPlayer = this.clientState.LocalPlayer;
+            //if (localPlayer == null)
+            //{
+            //    return;
+           // }
 
-            for (var i = 0; i < this.objectTable.Length; i++)
-            {
-                var actor = this.objectTable[i];
+            //for (var i = 0; i < this.objectTable.Length; i++)
+           // {
+             //   var actor = this.objectTable[i];
 
-                if (actor != null
-                    && actor.ObjectKind == ObjectKind.Player)
-                {
-                    RerenderActor(actor);
-                }
-            }
-        }
+               // if (actor != null
+                //    && actor.ObjectKind == ObjectKind.Player)
+               // {
+                 //   RerenderActor(actor);
+               // }
+           // }
+       // }
 
         private async void RerenderActor(GameObject actor)
         {
@@ -417,7 +417,7 @@ namespace PotatoFamine
             this.flagSlotUpdateHook.Dispose();
 
             // Refresh all players again
-            RefreshAllPlayers();
+           // RefreshAllPlayers();
 
             this.commandManager.RemoveHandler("/potato");
 

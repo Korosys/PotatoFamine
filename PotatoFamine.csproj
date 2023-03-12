@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<Version>1.3.0.1</Version>
+		<Version>1.3.0.4</Version>
 		<Authors>Fr4nsson</Authors>
 		<Company>Fr4nsson</Company>
 		<RootNamespace>PotatoFamine</RootNamespace>
 		<AssemblyName>PotatoFamine</AssemblyName>
-		<TargetFramework>net5.0-windows</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 		<LangVersion>latest</LangVersion>
 		<PlatformTarget>x64</PlatformTarget>
 		<Nullable>enable</Nullable>
@@ -35,9 +35,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DalamudPackager" Version="2.1.7" />
+		<PackageReference Include="DalamudPackager" Version="2.1.10" />
 		<PackageReference Include="ILRepack" Version="2.0.18" GeneratePathProperty="true" />
-		<Reference Include="System.Runtime, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+		<Reference Include="System.Runtime, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
 			
 		</Reference>
 		<Reference Include="FFXIVClientStructs">

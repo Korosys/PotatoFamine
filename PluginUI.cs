@@ -31,7 +31,8 @@ namespace PotatoFamine
             bool settingsVisible = this.plugin.SettingsVisible;
             if (ImGui.Begin("Potato Famine", ref settingsVisible, ImGuiWindowFlags.AlwaysAutoResize))
             {
-
+                ImGui.TextColored(WHAT_THE_HELL_ARE_YOU_DOING,
+                        "Any Changes WILL NOT be reflected until you change maps");
                 bool shouldChangeOthers = this.plugin.config.ShouldChangeOthers;
                 ImGui.Checkbox("Change other players", ref shouldChangeOthers);
 
